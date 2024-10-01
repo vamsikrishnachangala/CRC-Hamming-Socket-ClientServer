@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -Wall -pthread
+
+OBJ_FILES =  newclient7.o physicallayer.o  datalinklayer.o
+
+all: $(OBJ_FILES)
+	$(CC) $(CFLAGS) -o client $(OBJ_FILES) -lm
+
+%.o: %.c encDec.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f *.o client
+

@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -Wall -pthread
+
+OBJ_FILES =  newservermultithread9.o physicallayer.o  datalinklayer.o
+
+all: $(OBJ_FILES)
+	$(CC) $(CFLAGS) -o server $(OBJ_FILES) -lm
+
+%.o: %.c encDec.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f *.o server
+
